@@ -1,0 +1,10 @@
+<main>
+    <button class="question-card" (click)="this.communicationService.startPropertiesAndShows(this.texts)">
+        ?
+    </button>
+    <h2>TALLERES</h2>
+    <h3>PUNTUACIÓN GLOBAL : {{this.activityHandler.getGlobalScore()}}</h3>
+    <!-- Calls the component of the workshop cards -->
+    <app-card class="card-container" *ngFor="let item of this.activityHandler.activitysList; let i = index" [Activity]="item" [number]="i+1">
+    </app-card>
+</main>

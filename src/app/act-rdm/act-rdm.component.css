@@ -1,0 +1,226 @@
+.bk-properties,main {
+    width: 100%;
+    height: 100%
+}
+
+.bk-properties {
+    --color-primary: #ffc400;
+    --color-secondary: #ec1557;
+    background-color: #fac904;
+    justify-content: start;
+    align-items: center;
+    transition: all .5s;
+    padding: 2rem;
+    overflow: hidden
+}
+
+* {
+    transition: all .8s
+}
+
+.bk-properties,.logo-container,aside,fieldset,form {
+    display: flex;
+    flex-direction: column;
+    align-content: center
+}
+
+.logo-container {
+    justify-content: start;
+    align-items: center;
+    grid-area: logo
+}
+
+.logo-container>h2 {
+    text-shadow: 0 0 .1rem #222;
+    font-weight: 900;
+    font-size: 4em;
+    color: #444;
+    text-align: center
+}
+
+.logo-container>.logo-image {
+    width: 65%;
+    max-width: 26rem;
+    opacity: 50%;
+    overflow: hidden
+}
+
+.logo-container>button {
+    font-weight: 800;
+    background-color: var(--color-secondary);
+    color: #fff;
+    padding: 1% 3%;
+    box-sizing: border-box;
+    border: 2px solid var(--color-secondary);
+    transition: background-color .5s,color .5s
+}
+
+.logo-container>button:hover,.submit-button:hover {
+    background-color: #fff;
+    color: var(--color-secondary)
+}
+
+img,main>* {
+    background-color: #fff
+}
+
+img {
+    max-width: 100%;
+    z-index: 10;
+    border-radius: 100%;
+    overflow: hidden;
+    animation: spin 20s linear infinite
+}
+
+main {
+    display: grid;
+    grid-template-areas: "header header""main aside";
+    grid-template-columns: 5fr minmax(9rem,2.5fr);
+    grid-template-rows: min-content 6fr;
+    gap: 3dvh;
+    max-width: 80rem;
+    max-height: 80rem;
+    color: #444
+}
+
+main>* {
+    border-radius: 8px;
+    box-sizing: border-box;
+    box-shadow: 0 0 .4rem 0#44444437;
+    transition: all .8s
+}
+
+main>.header-main {
+    grid-area: header;
+    background-color: var(--color-secondary)
+}
+
+main>form {
+    grid-area: main;
+    padding: 2rem
+}
+
+aside>div,input {
+    text-align: center
+}
+
+input {
+    text-wrap: wrap;
+    cursor: pointer
+}
+
+aside,fieldset,form {
+    justify-content: center
+}
+
+aside,form {
+    align-items: center
+}
+
+form {
+    gap: 2rem
+}
+
+aside {
+    padding: 2rem;
+    max-height: 30rem;
+    gap: .3rem
+}
+
+aside>div,main>* {
+    border: 2px solid var(--color-secondary)
+}
+
+aside>div {
+    width: 100%;
+    align-content: center
+}
+
+.header-main,form {
+    padding: 1rem
+}
+
+fieldset,p {
+    gap: 1rem;
+    max-width: 40rem
+}
+
+h3 {
+    font-size: 2rem;
+    color: var(--color-primary);
+    font-weight: 800
+}
+
+.button-item,aside>div {
+    flex: 1 1 0;
+    border-radius: 8px;
+    transition: background-color .5s,color .5s
+}
+
+.button-item {
+    padding: 1rem;
+    color: #444
+}
+
+.isSelected {
+    background-color: #fac904;
+    color: #fff
+}
+
+.submit-button {
+    background-color: var(--color-secondary);
+    padding: .5rem 1.2rem;
+    border-radius: 2px;
+    color: #fff;
+    font-weight: 900;
+    box-sizing: border-box;
+    border: 2px solid var(--color-secondary);
+    transition: background-color .5s,color .5s
+}
+
+.isInactive {
+    background-color: #444;
+    pointer-events: none
+}
+
+.isCompleted {
+    background-color: var(--color-secondary);
+    color: #fff
+}
+
+.isIncorrect {
+    background-color: #f56f60;
+    color: #fff
+}
+
+.isCorrect {
+    background-color: #7ebb66;
+    color: #fff
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+@media screen and (max-width:700px) {
+    main{
+        grid-template-areas: "header"
+        "aside"
+        "main";
+        grid-template-columns: 1fr;
+        grid-template-rows: min-content max-content 5fr;
+    }
+    aside{
+        flex-direction: row;
+        padding:4% 5%;
+    }
+    aside>div{
+        /* background-color: blanchedalmond; */
+        padding: 3%;
+        
+    }
+}

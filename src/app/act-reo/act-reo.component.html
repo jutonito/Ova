@@ -1,0 +1,37 @@
+<section class="aside">
+        <div class="quizz-section" *ngIf="isInit" ngClass="{'fade-out' : IsInit}">
+            <aside>
+                <h2 class="text-info">{{this._questionHandlerService.getScore()}}</h2>
+            </aside>
+            <main>
+                <h3>Pregunta: {{this._questionHandlerService.getCurrentQuestionIndex()+1}}/{{this._questionHandlerService.getLenghtQuestions()}}</h3>
+                <form>
+                    <fieldset>
+                        <legend>{{this._questionHandlerService.getCurrentQuestion().getQuestion()}}</legend>
+                        <ng-container *ngFor="let item of this._questionHandlerService.getCurrentQuestion().getResponses(); let i = index">
+                            <input [ngClass]="{ 'button-selected': this._questionHandlerService.getCurrentResponseIndex() == i && this._questionHandlerService.getStatus() == false, 
+                            'Correct': this._questionHandlerService.getStatus() == true && i == this._questionHandlerService.getCurrentQuestion().getAnswerIndex(),
+                            'Incorrect': i != this._questionHandlerService.getCurrentQuestion().getAnswerIndex() &&  this._questionHandlerService.getStatus() == true && this._questionHandlerService.getCurrentResponseIndex() == i}"
+                            type="button" [value]="item" (click)="this._questionHandlerService.changeCurrentResponseIndex(i)">
+                        </ng-container>
+                    </fieldset>
+                    <div class="button-container">
+                        <input type="button" value="Siguiente" (click)="this._questionHandlerService.executeChanges()" (click)="this.provee(this._questionHandlerService.getCurrentQuestionIndex())"   [ngClass]="{'no-click' : this._questionHandlerService.getStatus() || this._questionHandlerService.getCurrentResponseIndex()==null}">
+                    </div>
+                    
+                </form>
+            </main>
+        </div>
+        <div *ngIf="!isInit" class="intro">
+            <div class="intro-content">
+                <h4>QUIZZ</h4>
+                <h2>REVISTA TRIVIA</h2>
+                <p>Comprensión, avance y estado de la educación y la pedagogía</p>
+                <button type="button" class="button-init" (click)="changeIsInit()">EMPEZAR</button>
+            </div>
+            <div class="intro-image">
+                <img src="assets/images/chiguiro.svg" alt="imagen de chiguiro">
+            </div>
+        </div>
+</section>
+
